@@ -1,19 +1,42 @@
-const router = require('koa-router')()
+const router = require("koa-router")();
 
-router.get('/', async (ctx, next) => {
-  await ctx.render('index', {
-    title: 'Hello Koa 2!'
-  })
-})
+router.get("/", async (ctx, next) => {
+  await ctx.render("index", {
+    title: "Hello Koa 2!"
+  });
+});
 
-router.get('/string', async (ctx, next) => {
-  ctx.body = 'koa2 string'
-})
+router.get("/string", async (ctx, next) => {
+  ctx.body = "koa2 string";
+});
 
-router.get('/json', async (ctx, next) => {
+router.get("/json", async (ctx, next) => {
   ctx.body = {
-    title: 'koa2 json'
-  }
-})
+    title: "koa2 json"
+  };
+});
 
-module.exports = router
+router.get("/profile/:userName", async (ctx, next) => {
+  const { userName } = ctx.params;
+
+  // todo: ctx.params 获取动态路由的传值
+  // ctx.request.query 获取解析的查询字符串, 当没有查询字符串时，返回一个空对象
+  console.log(ctx.params); //{ aid: '123', cid: '456' }
+
+  ctx.body = {
+    title: "this is profile page",
+    userName
+  };
+});
+
+router.get("/loadMore/:userName/:pageIndex", async (ctx, next) => {
+  const { userName, pageIndex } = ctx.params;
+
+  ctx.body = {
+    title: "this is loadMore API",
+    userName,
+    pageIndex
+  };
+});
+
+module.exports = router;
