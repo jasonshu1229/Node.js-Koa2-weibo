@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "cross-env": "^7.0.0",
-    "nodemon": "^1.19.1"
+    "nodemon": "^1.19.1",
+    "redis": "^2.8.0"
   }
 }

@@ -25,7 +25,7 @@ if (isProd) {
         host: '127.0.0.1'
     }
 
-    MYSQL_CONF = {
+    MYSQL_CONF = {  
         // 线上的 mysql 配置
         host: 'localhost',
         user: 'root',

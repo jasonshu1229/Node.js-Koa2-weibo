@@ -1,3 +1,7 @@
+/**
+ * @description sequelize 环境变量
+ * @author 书豪
+ */
 const ENV = process.env.NODE_ENV
 
 module.exports = {
