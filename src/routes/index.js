@@ -26,8 +26,17 @@ router.get("/string", async (ctx, next) => {
 });
 
 router.get("/json", async (ctx, next) => {
+  const session = ctx.session
+
+  console.log(session)
+  if (session.viewNum == null) {
+    session.viewNum = 0
+  }
+  session.viewNum++  // viewNum: 7  刷新的次数
+
   ctx.body = {
-    title: "koa2 json"
+    title: "koa2 json",
+    viewNum: session.viewNum
   };
 });
 

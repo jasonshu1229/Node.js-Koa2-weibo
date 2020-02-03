@@ -37,13 +37,13 @@
       if (val == null) {
         resolve(null)
       }
-      try{
+      try {
         resolve(
           // 尝试吧取出来的值变成对象
           JSON.parse(val)
-        ) catch (ex) {
-          resolve(val)
-        }
+        ) 
+      } catch (ex) {
+        resolve(val)
       }
     })
   })
