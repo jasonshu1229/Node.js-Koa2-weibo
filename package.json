@@ -6,7 +6,7 @@
     "start": "node bin/www",
     "dev": "cross-env NODE_ENV=dev ./node_modules/.bin/nodemon bin/www",
     "prd": "cross-env NODE_ENV=production pm2 start bin/www",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cross-env NODE_ENV=test jest --runInBand --forceExit --colors"
   },
   "dependencies": {
     "debug": "^4.1.1",
@@ -14,7 +14,7 @@
     "koa": "^2.7.0",
     "koa-bodyparser": "^4.2.1",
     "koa-convert": "^1.2.0",
-    "ko  n": "^2.0.4",
+    "koa-generic-session": "^2.0.4",
     "koa-json": "^2.0.2",
     "koa-logger": "^3.2.0",
     "koa-onerror": "^4.1.0",
@@ -27,7 +27,9 @@
   },
   "devDependencies": {
     "cross-env": "^7.0.0",
+    "jest": "^25.1.0",
     "nodemon": "^1.19.1",
-    "redis": "^2.8.0"
+    "redis": "^2.8.0",
+    "supertest": "^4.0.2"
   }
 }
