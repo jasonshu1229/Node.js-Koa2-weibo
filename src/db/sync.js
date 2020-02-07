@@ -6,7 +6,7 @@ const seq = require('./seq');
 
 // require('./model');
 
- // 测试连接
+// 测试连接
 seq.authenticate().then(() => {
   console.log('auth ok')
 }).catch(() => {
@@ -14,7 +14,7 @@ seq.authenticate().then(() => {
 });
 
 // 执行同步
-// force: true 表示 如果数据库有 已经存在的数据表，会删掉重新建
+// force: true 表示 如果数据库 已经存在该数据表，会删掉重新建
 seq.sync({ force: true}).then(() => {
   console.log('sync ok')
   process.exit();

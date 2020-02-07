@@ -1,0 +1,18 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "es6": true,
+    "commonjs": true,
+    "node": true
+  },
+  "rules": {
+    "indent": ["error", 2], // 换行缩进
+    "quotes": [
+      "error",
+      "single",
+      {
+        "allowTemplateLiterals": true   // es6的 模板字符串 ``
+      }
+    ]
+  }
+}

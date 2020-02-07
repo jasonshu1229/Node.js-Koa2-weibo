@@ -15,6 +15,7 @@ const conf = {
 }
 
 if (isTest) {
+  // 这里 单元测试的时候 不打印mysql 语句, 方便直接定位到错误
   // 默认的loggin 是 打印数据库mysql 语句的
   conf.logging = () => {}
 }
