@@ -37,6 +37,7 @@ router.get("/json", async (ctx, next) => {
     title: "koa2 json",
     // viewNum: session.viewNum
   };
+
 });
 
 router.get("/profile/:userName", async (ctx, next) => {
