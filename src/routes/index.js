@@ -33,6 +33,7 @@ router.get("/json", async (ctx, next) => {
   // }
   // session.viewNum++  // viewNum: 7  刷新的次数
 
+  // throw Error()
   ctx.body = {
     title: "koa2 json",
     // viewNum: session.viewNum

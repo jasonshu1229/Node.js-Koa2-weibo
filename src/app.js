@@ -20,7 +20,7 @@ const errorViewRouter = require('./routes/view/error')
 let onerrorConf = {}
 if (isProd) {
   onerrorConf = {
-    redirect: '/error'
+    redirect: '/error' // 遇到错误时跳转到该路由
   }
 }
 onerror(app, onerrorConf)
@@ -54,9 +54,9 @@ app.use(session({
 }))
 
 // routes
-app.use(index.routes(), errorViewRouter.allowedMethods())
+app.use(index.routes(), index.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
-app.use(errorViewRouter.routes(), users.allowedMethods())
+app.use(errorViewRouter.routes(), errorViewRouter.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {
