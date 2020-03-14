@@ -2,13 +2,14 @@
  * @description user controller
  */
 
-const { getUserInfo,createUser } = require('../services/user')
+const { getUserInfo,createUser,deleteUser } = require('../services/user')
 const { SuccessModel,ErrorModel } = require('../model/ResModel')
 const {
   registerUserNameNotExistInfo,
   registerUserNameExistInfo,
   registerFailInfo,
-  loginFailInfo
+  loginFailInfo,
+  addFollowerFailInfo
 } = require('../model/ErrorInfo.js')
 const doCrypto = require('../utils/cryp')
 
@@ -80,8 +81,24 @@ async function login(ctx, userName, password) {
   return new SuccessModel()
 }
 
+/**
+ * 
+ * @param {string} userName 用户名
+ */
+async function deleteCurUser(userName) {
+  // service
+  const result = await deleteUser(userName)
+  if (result) {
+    // 成功
+    return new SuccessModel()
+  }
+  // 失败
+  return new ErrorModel(addFollowerFailInfo)
+}
+
 module.exports = {
   isExist,
   register,
-  login
+  login,
+  deleteCurUser
 }
