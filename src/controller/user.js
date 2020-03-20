@@ -2,14 +2,19 @@
  * @description user controller
  */
 
-const { getUserInfo,createUser,deleteUser } = require('../services/user')
+const {
+  getUserInfo,
+  createUser,
+  deleteUser,
+  updateUser } = require('../services/user')
 const { SuccessModel,ErrorModel } = require('../model/ResModel')
 const {
   registerUserNameNotExistInfo,
   registerUserNameExistInfo,
   registerFailInfo,
   loginFailInfo,
-  addFollowerFailInfo
+  addFollowerFailInfo,
+  changeInfoFailInfo
 } = require('../model/ErrorInfo.js')
 const doCrypto = require('../utils/cryp')
 
@@ -59,7 +64,7 @@ async function register({ userName, password, gender }) {
 }
 
 /**
- * 
+ * 登录
  * @param {Object} ctx koa2 ctx
  * @param {string} userName 
  * @param {*} password 
@@ -82,7 +87,7 @@ async function login(ctx, userName, password) {
 }
 
 /**
- * 
+ * 删除当前用户
  * @param {string} userName 用户名
  */
 async function deleteCurUser(userName) {
@@ -96,9 +101,45 @@ async function deleteCurUser(userName) {
   return new ErrorModel(addFollowerFailInfo)
 }
 
+/**
+ * 修改个人信息
+ * @param {Object} ctx ctx
+ * @param {string} nickName 昵称
+ * @param {string} city 城市
+ * @param {string} picture 头像
+ */
+async function changeInfo(ctx, { nickName, city, picture}) {
+  const { userName } = ctx.session.userInfo
+  if (!nickName) {
+    nickName = userName
+  }
+  // service
+  const result = await updateUser(
+    {
+      newNickName: nickName,
+      newCity: city,
+      newPicture: picture
+    },
+    { userName }
+  )
+  if (result) {
+    // 执行成功
+    Object.assign(ctx.session.userInfo, {
+      nickName,
+      city,
+      picture
+    })
+    // 返回
+    return new SuccessModel()
+  }
+  // 失败
+  return new ErrorModel(changeInfoFailInfo)
+}
+
 module.exports = {
   isExist,
   register,
   login,
-  deleteCurUser
+  deleteCurUser,
+  changeInfo
 }
