@@ -13,6 +13,9 @@ router.prefix('/api/utils')
 const koaFrom = require('formidable-upload-koa')
 router.post('/upload', loginCheck, koaForm(), async (ctx, next) => {
   const file = ctx.req.files['file']
+  if (!file) {
+    return
+  }
   const { sieze, path, name, type } = file
   // controller
   ctx.body = await saveFile({
