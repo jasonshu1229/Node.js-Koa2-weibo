@@ -12,7 +12,7 @@ const BLOG_LIST_TPL_ = fs.readFileSync(
 ).toString()
 
 /**
- * 根据 blogList 许安然处 html 字符串
+ * 根据 blogList 渲染出 html 字符串
  * @param {Array} blogList 微博列表
  * @param {boolean} canReply 是否可以回复
  */
