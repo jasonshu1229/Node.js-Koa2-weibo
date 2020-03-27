@@ -61,3 +61,16 @@ test('李四取消关注张三，应该成功', async () => {
       .set('cookie', L_COOKIE)
   expect(res.body.errno).toBe(0)
 })
+
+// 获取 at 列表
+test('获取张三的 at 列表，应该有李四', async () => {
+  const res = await server
+    .get('/api/user/getAtList')
+    .set('cookie', Z_COOKIE)
+  const atList = res.body
+  const hasUserName = atList.some(item => {
+    // '昵称 - userName'
+    return item.indexOf(`- ${L_USER_NAME}`) > 0
+  })
+  expect(hasUserName).toBe(true)
+})

@@ -13,6 +13,5 @@ module.exports = {
 
   L_ID: 2,
   L_USER_NAME: 'lisi',
-  L_COOKIE: 'weibo.sid=7KtQUvnWKJpNmsrnxnSg62FUtrxkCTmB; weibo.sid.sig=uYjp6iKGwooTn9TqO4EjatCWSzk'
-
+  L_COOKIE: 'weibo.sid=eXLpMyIH_N2thUZeDbiDRyTldlCSGZ-T; weibo.sid.sig=xuKm_EKWxGM9G7jAl6Cr1l8_Q_M'
 }
